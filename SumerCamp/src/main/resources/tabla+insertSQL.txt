@@ -1,0 +1,87 @@
+
+CREATE TABLE guardian (
+    dni VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    address VARCHAR(100) NOT NULL,
+    email VARCHAR(50) NOT NULL
+);
+
+
+CREATE TABLE child (
+    idChild INTEGER PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    birthday DATE NOT NULL,
+    specialMenu BOOLEAN NOT NULL,
+    dniGuardian VARCHAR(20) REFERENCES guardian(dni)
+);
+
+
+
+CREATE TABLE activity (
+    idActivity INTEGER PRIMARY KEY,
+    description VARCHAR(200) NOT NULL
+);
+
+
+
+CREATE TABLE camp (
+    idCamp INTEGER PRIMARY KEY,
+    site VARCHAR(50) NOT NULL,
+    fromDate DATE NOT NULL,
+    toDate DATE NOT NULL
+);
+
+CREATE TABLE child_activity (
+    idChild INTEGER REFERENCES child(idChild),
+    idActivity INTEGER REFERENCES activity(idActivity),
+    PRIMARY KEY (idChild, idActivity)
+);
+
+
+
+CREATE TABLE camp_child (
+    idCamp INTEGER REFERENCES camp(idCamp),
+    idChild INTEGER REFERENCES child(idChild),
+    PRIMARY KEY (idCamp, idChild)
+);
+
+INSERT INTO guardian (dni, name, phone, address, email) 
+VALUES 
+('123456789A', 'Juan Perez', '123-456-7890', '123 Main St, City', 'juan@example.com'),
+('987654321B', 'María López', '987-654-3210', '456 Oak St, Town', 'maria@example.com'),
+('567890123C', 'Pedro García', '555-555-5555', '789 Elm St, Village', 'pedro@example.com');
+
+
+INSERT INTO child (idChild, name, birthday, specialMenu, dniGuardian) 
+VALUES 
+(1, 'Ana Perez', '2010-05-15', TRUE, '123456789A'),
+(2, 'Carlos López', '2012-10-20', FALSE, '987654321B'),
+(3, 'Elena García', '2011-03-08', TRUE, '567890123C');
+
+INSERT INTO activity (idActivity, description) 
+VALUES 
+(1, 'Swimming lessons'),
+(2, 'Arts and crafts workshop'),
+(3, 'Outdoor sports activities');
+
+
+INSERT INTO camp (idCamp, site, fromDate, toDate) 
+VALUES 
+(1, 'Lakeview Campground', '2024-07-01', '2024-07-10'),
+(2, 'Mountain Retreat', '2024-08-15', '2024-08-25'),
+(3, 'Beachside Resort', '2024-06-10', '2024-06-20');
+
+
+INSERT INTO child_activity (idChild, idActivity) 
+VALUES 
+(1, 1),
+(2, 2),
+(3, 3);
+
+
+INSERT INTO camp_child (idCamp, idChild) 
+VALUES 
+(1, 1),
+(2, 2),
+(3, 3);

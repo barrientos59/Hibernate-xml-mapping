@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Entities.Camp" table="camp">
+        <id name="idCamp" type="int">
+            <column name="idCamp"/>
+            <generator class="native"/>
+        </id>
+        <property name="site" column="site"/>
+        <property name="fromDate" column="fromDate"/>
+        <property name="toDate" column="toDate"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,3 @@
+323132123,Juan Pérez,123456789,Calle Principal 123,juan@example.com
+513513512,María González,987654321,Avenida Secundaria 456,maria@example.com
+142514154,Luis García,456789123,Plaza Central 789,luis@example.com

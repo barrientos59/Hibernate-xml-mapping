@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Entities.ChildActivity" table="child_activity">
+        <composite-id>
+            <key-many-to-one name="child" class="Entities.Child" column="idChild"/>
+            <key-many-to-one name="activity" class="Entities.Activity" column="idActivity"/>
+        </composite-id>
+    </class>
+</hibernate-mapping>
